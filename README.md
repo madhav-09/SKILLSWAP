@@ -2,7 +2,7 @@
 
 A modern web application where users can exchange skills and knowledge with each other. Built for Odoo Hackathon 2025.
 
-Hacathon status: We got Selected 🏆 for Fisrt Round.
+**Hackathon Status: Selected 🏆 for First Round**
 
 ## 🌟 Features
 
@@ -73,75 +73,127 @@ Hacathon status: We got Selected 🏆 for Fisrt Round.
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 16+
-- PostgreSQL 12+
-- npm or yarn
+- **Node.js 16+** - [Download](https://nodejs.org/)
+- **PostgreSQL 12+** - [Download](https://www.postgresql.org/download/)
+- **Git** - [Download](https://git-scm.com/downloads)
 
-### Installation
-
-1. **Clone Repository**
+### 1. Clone Repository
 ```bash
 git clone https://github.com/madhav-09/SkillSwap.git
 cd SkillSwap
 ```
 
-2. **Setup Database**
+### 2. Database Setup
 ```bash
+# Start PostgreSQL service
+# Windows: net start postgresql-x64-15
+# Mac: brew services start postgresql
+# Linux: sudo systemctl start postgresql
+
 # Create database
 psql -U postgres -c "CREATE DATABASE skillswap;"
 
 # Run schema
 psql -U postgres -d skillswap -f database/schema.sql
+
+# Verify tables created
+psql -U postgres -d skillswap -c "\dt"
 ```
 
-3. **Backend Setup**
+### 3. Backend Setup
 ```bash
 cd backend
 npm install
 
 # Create .env file
 echo "PORT=5001
+JWT_SECRET=your_jwt_secret_here_change_in_production
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=skillswap
+DB_USER=postgres
+DB_PASSWORD=your_postgres_password" > .env
+
+# Start backend server
+npm run dev
+```
+
+### 4. Frontend Setup
+```bash
+# Open new terminal
+cd frontend
+npm install
+
+# Start React app
+npm start
+```
+
+### 5. Access Application
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:5001/api/health
+
+## 🧪 Test the Application
+
+1. **Register**: Create account at http://localhost:3000
+2. **Profile**: Set up your profile with skills
+3. **Browse**: Search for other users
+4. **Connect**: Send skill swap requests
+5. **Chat**: Message with connected users
+6. **Rate**: Leave reviews after skill exchanges
+
+## 📊 Project Architecture
+
+```
+SkillSwap/
+├── backend/                 # Node.js + Express API
+│   ├── routes/             # API endpoints
+│   ├── middleware/         # Authentication
+│   ├── config/            # Database connection
+│   └── app.js             # Main server file
+├── frontend/               # React Application
+│   ├── src/
+│   │   ├── components/    # Reusable components
+│   │   ├── pages/         # Main application pages
+│   │   ├── hooks/         # Custom React hooks
+│   │   └── services/      # API integration
+│   └── public/            # Static assets
+├── database/              # PostgreSQL schema
+└── README.md             # This file
+```
+
+## 🔧 Environment Variables
+
+### Backend (.env)
+```env
+PORT=5001
 JWT_SECRET=your_jwt_secret_here
 DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=skillswap
 DB_USER=postgres
-DB_PASSWORD=your_password" > .env
-
-# Start backend
-npm run dev
+DB_PASSWORD=your_password
 ```
 
-4. **Frontend Setup**
-```bash
-cd frontend
-npm install
-npm start
+### Frontend (.env) - Optional
+```env
+REACT_APP_API_URL=http://localhost:5001/api
 ```
 
-5. **Access Application**
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:5001
+## 🎨 Design & UI/UX
 
-## 📱 Usage
+### Modern Glassmorphism Design
+- **Frosted Glass Effects** - Beautiful translucent cards
+- **Gradient Backgrounds** - Eye-catching color schemes
+- **Smooth Animations** - Professional micro-interactions
+- **Dark/Light Themes** - User preference support
+- **Mobile-First Design** - Responsive across all devices
 
-1. **Register Account** - Create your profile
-2. **Add Skills** - List what you can teach/want to learn
-3. **Browse Users** - Find skill matches
-4. **Send Requests** - Propose skill swaps
-5. **Manage Swaps** - Accept/reject requests
-6. **Start Messaging** - Chat with connected users
-7. **Coordinate Meetings** - Plan skill exchange sessions
-8. **Leave Reviews** - Rate your experiences
-
-## 🎨 Design
-
-The application follows a modern glassmorphism design with:
-- Frosted glass effects
-- Smooth animations
-- Professional color scheme
-- Intuitive navigation
-- Mobile-responsive layout
+### User Experience Features
+- **Intuitive Navigation** - Easy-to-use interface
+- **Real-time Notifications** - Instant feedback
+- **Loading States** - Clear progress indicators
+- **Error Handling** - User-friendly error messages
+- **Accessibility** - WCAG compliant design
 
 ## 🏆 Hackathon Highlights
 
@@ -161,10 +213,85 @@ The application follows a modern glassmorphism design with:
 - **Community Connection** - Local skill networks
 - **Economic Value** - Skill-based economy
 
-## 👥 Team AamMunde
+## 🚀 Deployment
 
-Built with ❤️ for Odoo Hackathon 2025
+### Frontend (Vercel/Netlify)
+```bash
+# Build for production
+cd frontend
+npm run build
+
+# Deploy build folder
+```
+
+### Backend (Heroku/Railway)
+```bash
+# Add Procfile
+echo "web: node app.js" > Procfile
+
+# Set environment variables in hosting platform
+```
+
+### Database (PostgreSQL Cloud)
+- **Heroku Postgres**
+- **AWS RDS**
+- **Railway PostgreSQL**
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Database Connection Error**
+```bash
+# Check PostgreSQL is running
+psql -U postgres -c "SELECT version();"
+
+# Verify .env file has correct credentials
+```
+
+**Port Already in Use**
+```bash
+# Change PORT in backend/.env
+PORT=5002
+
+# Or kill process using port
+# Windows: netstat -ano | findstr :5001
+# Mac/Linux: lsof -ti:5001 | xargs kill
+```
+
+**Module Not Found**
+```bash
+# Clear cache and reinstall
+npm cache clean --force
+rm -rf node_modules package-lock.json
+npm install
+```
+
+## 📈 Performance Features
+
+- **Optimized Database Queries** with proper indexing
+- **JWT Authentication** for secure sessions
+- **Responsive Design** for all devices
+- **Real-time Messaging** with efficient polling
+- **Image Upload** with file validation
+- **Search & Filtering** with multiple criteria
+
+## 🔒 Security Features
+
+- Password hashing with bcrypt
+- JWT token authentication
+- Input validation and sanitization
+- SQL injection prevention
+- CORS configuration
+- File upload restrictions
+
+## 👥 Team AamMunde
+Built with ❤️ for **Odoo Hackathon 2025**
+
 
 ## 📄 License
 
 MIT License - See LICENSE file for details
+
+
+**⭐ Star this repository if you found it helpful!**
