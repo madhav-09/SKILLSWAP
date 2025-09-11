@@ -48,7 +48,7 @@ router.post('/', authMiddleware, async (req, res) => {
 });
 
 // Get ratings given by a user
-router.get('/given/:userId', authMiddleware, async (req, res) => {
+router.get('/given/:userId', async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT r.*, u.name as rated_user_name
