@@ -108,7 +108,7 @@ const Browse = () => {
                 type="text"
                 value={nameSearch}
                 onChange={(e) => setNameSearch(e.target.value)}
-                placeholder="John, Sarah, Mike..."
+                placeholder="Madhav, Rahul, Yash..."
                 className="input-glass w-full px-4 py-4 rounded-2xl focus:ring-2 focus:ring-blue-500/50 transition-all duration-300 font-inter"
               />
             </div>
@@ -132,7 +132,7 @@ const Browse = () => {
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="New York, Remote, London..."
+                placeholder="Jaipur, Haryana, Assam..."
                 className="input-glass w-full px-4 py-4 rounded-2xl focus:ring-2 focus:ring-blue-500/50 transition-all duration-300 font-inter"
               />
             </div>
