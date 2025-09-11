@@ -50,6 +50,7 @@ router.post('/', authMiddleware, async (req, res) => {
 // Get ratings given by a user
 router.get('/given/:userId', async (req, res) => {
   try {
+    console.log('Getting ratings for user ID:', req.params.userId);
     const result = await pool.query(`
       SELECT r.*, u.name as rated_user_name
       FROM ratings r
@@ -58,6 +59,8 @@ router.get('/given/:userId', async (req, res) => {
       ORDER BY r.created_at DESC
     `, [req.params.userId]);
     
+    console.log('Found ratings:', result.rows.length);
+    console.log('Ratings data:', result.rows);
     res.json(result.rows);
   } catch (error) {
     console.error('Get ratings error:', error);

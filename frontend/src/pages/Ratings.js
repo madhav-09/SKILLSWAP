@@ -35,10 +35,13 @@ const Ratings = () => {
 
   const fetchMyRatings = async () => {
     try {
+      console.log('Fetching ratings for user ID:', user.id);
       const response = await ratingsAPI.getGivenRatings(user.id);
+      console.log('API Response:', response);
+      console.log('Response data:', response.data);
       setMyRatings(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
-      console.error('Error fetching ratings:', error);
+      console.error('Error fetching ratings:', error.response || error);
       setMyRatings([]);
     }
   };
