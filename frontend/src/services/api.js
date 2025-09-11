@@ -47,6 +47,7 @@ export const swapsAPI = {
 // Ratings API
 export const ratingsAPI = {
   getUserRatings: (userId) => api.get(`/ratings/user/${userId}`),
+  getGivenRatings: (userId) => api.get(`/ratings/given/${userId}`),
   addRating: (rating) => api.post('/ratings', rating),
 };
 

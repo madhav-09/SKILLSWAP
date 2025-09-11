@@ -33,7 +33,7 @@ const Ratings = () => {
 
   const fetchMyRatings = async () => {
     try {
-      const response = await ratingsAPI.getUserRatings(user.id);
+      const response = await ratingsAPI.getGivenRatings(user.id);
       setMyRatings(response.data);
     } catch (error) {
       console.error('Error fetching ratings:', error);
@@ -65,6 +65,7 @@ const Ratings = () => {
       setSelectedSwap(null);
       setRating({ score: 5, comment: '' });
       fetchMyRatings();
+      fetchCompletedSwaps();
     } catch (error) {
       const event = new CustomEvent('showNotification', {
         detail: { type: 'error', title: 'Rating Failed', message: 'Unable to submit rating' }
@@ -75,7 +76,7 @@ const Ratings = () => {
   };
 
   const hasRated = (swapId) => {
-    return myRatings.some(r => r.swap_id === swapId);
+    return myRatings.some(r => r.swap_id === parseInt(swapId));
   };
 
   return (
