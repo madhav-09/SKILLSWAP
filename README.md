@@ -1,8 +1,6 @@
 # 🎯 Skill Swap Platform - AamMunde Team
 
-A modern web application where users can exchange skills and knowledge with each other. Built for Odoo Hackathon 2025.
-
-**Hackathon Status: Selected 🏆 for First Round**
+A modern web application where users can exchange skills and knowledge with each other.
 
 ## 🌟 Features
 
@@ -195,7 +193,7 @@ REACT_APP_API_URL=http://localhost:5001/api
 - **Error Handling** - User-friendly error messages
 - **Accessibility** - WCAG compliant design
 
-## 🏆 Hackathon Highlights
+## 🏆 Project Highlights
 
 ### Innovation
 - **Skill Exchange Economy** - Unique peer-to-peer learning
@@ -284,14 +282,3 @@ npm install
 - SQL injection prevention
 - CORS configuration
 - File upload restrictions
-
-## 👥 Team AamMunde
-Built with ❤️ for **Odoo Hackathon 2025**
-
-
-## 📄 License
-
-MIT License - See LICENSE file for details
-
-
-**⭐ Star this repository if you found it helpful!**
